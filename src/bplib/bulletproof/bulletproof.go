@@ -10,7 +10,7 @@ import (
 )
 
 /*
- * Copyright (C) 2020   PlatONE
+ * Copyright (C) 2020
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -464,8 +464,8 @@ func GenerateBpParam(n int64) *BulletProofParams {
 	bpparam.gVector = make([]*bn256.G1, bpparam.n)
 	bpparam.hVector = make([]*bn256.G1, bpparam.n)
 	for i := 0; i < int(bpparam.n); i++ {
-		bpparam.gVector[i] = MapIntoGroup("platone" + "g" + string(rune(i)))
-		bpparam.hVector[i] = MapIntoGroup("platone" + "h" + string(rune(i)))
+		bpparam.gVector[i] = MapIntoGroup(" " + "g" + string(rune(i)))
+		bpparam.hVector[i] = MapIntoGroup(" " + "h" + string(rune(i)))
 	}
 	return &bpparam
 }
@@ -478,8 +478,8 @@ func initbpparam() {
 	bpparam.gVector = make([]*bn256.G1, bpparam.n)
 	bpparam.hVector = make([]*bn256.G1, bpparam.n)
 	for i := 0; i < int(bpparam.n); i++ {
-		bpparam.gVector[i] = MapIntoGroup("platone" + "g" + string(rune(i)))
-		bpparam.hVector[i] = MapIntoGroup("platone" + "h" + string(rune(i)))
+		bpparam.gVector[i] = MapIntoGroup(" " + "g" + string(rune(i)))
+		bpparam.hVector[i] = MapIntoGroup(" " + "h" + string(rune(i)))
 	}
 }
 
