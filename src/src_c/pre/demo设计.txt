@@ -1,0 +1,90 @@
+一、receiver
+1.请求发起报文
+发送topic: pre/receiver/request/#
+{
+	"ReceiverPubkey":
+	"SenderPubkey":
+	"ProxyPubkey":
+	"Role":
+	""
+}
+
+2.监听proxy发送过来的数据密文
+监听topic: pre/proxy/respone/#
+{
+	"ReceiverPubkey":
+	"SenderPubkey":
+	"ProxyPubkey":
+	"Role":
+	"CipherText1":
+	"CipherText2":
+}
+
+二、proxy
+1、监听receiver发送过来的请求报文
+监听topic: pre/receiver/request/#
+{
+	"ReceiverPubkey":
+	"SenderPubkey":
+	"ProxyPubkey":
+	"Role":
+}
+
+2、转发receiver请求报文给sender
+发送topic: pre/proxy/request/#
+{
+	"ReceiverPubkey":
+	"SenderPubkey":
+	"ProxyPubkey":
+	"Role":
+}
+
+2、接收sender的响应报文
+监听topic: pre/sender/respone/#
+{
+	"ReceiverPubkey":
+	"SenderPubkey":
+	"ProxyPubkey":
+	"Role":
+	"CipherText1":
+	"CipherText2":
+	"ReEncryptKey":
+}
+3、执行重加密
+
+4、将重加密结果发送给receiver
+发送topic: pre/proxy/respone/#
+{
+	"ReceiverPubkey":
+	"SenderPubkey":
+	"ProxyPubkey":
+	"Role":
+	"CipherText1":
+	"CipherText2":
+}
+
+三、数据提供者
+1、监听proxy发送过来的请求报文
+监听topic: pre/proxy/request/#
+{
+	"ReceiverPubkey":
+	"SenderPubkey":
+	"ProxyPubkey":
+	"Role":
+}
+
+2、生成重加密密钥
+
+3、生成第一重密文
+
+4、将重加密密钥及第一重密文发送给proxy
+发送topic: pre/sender/respone/#
+{
+	"ReceiverPubkey":
+	"SenderPubkey":
+	"ProxyPubkey":
+	"Role":
+	"CipherText1":
+	"CipherText2":
+	"ReEncryptKey":
+}

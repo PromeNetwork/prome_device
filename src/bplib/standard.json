@@ -1,0 +1,42 @@
+[
+  {
+    "ID": 1,
+    "PTID": 1,
+    "PTOwner": "Governor",
+    "PTUser": "WXblockchain",
+    "mSTL": 10,
+    "mSTH": 40,
+    "mSTP": 2,
+    "cmGT": "alpha"
+    },
+  {
+    "ID": 2,
+    "PTID": 2,
+    "PTOwner": "Governor",
+    "PTUser": "WXblockchain",
+    "mSTL": 10,
+    "mSTH": 50,
+    "mSTP": 2,
+    "cmGT": "alpha"
+  },
+  {
+    "ID": 3,
+    "PTID": 2,
+    "PTOwner": "Governor",
+    "PTUser": "MSTH",
+    "mSTL": 10,
+    "mSTH": 50,
+    "mSTP": 2,
+    "cmGT": "alpha"
+  },
+  {
+    "ID": 4,
+    "PTID": 9,
+    "PTOwner": "Governor",
+    "PTUser": "WXblockchain",
+    "mSTL": 1000,
+    "mSTH": 6999,
+    "mSTP": 1,
+    "cmGT": "alpha"
+  }
+]

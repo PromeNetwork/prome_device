@@ -1,0 +1,18 @@
+{
+	"CfgMqtt":	{
+			"CfgType":	"mqtt",
+			"Host":	"192.168.1.102",
+			"Port":	9888,
+			"User":	"iottest",
+			"Pwd":	"123456"
+		},
+	"CfgChain":	{
+			"CfgType":	"chain",
+			"OnChain":	"yes",
+			"Type":	"samurai",
+			"Domain":	"https://testpoe.e.wxblockchain.com/frontgateway",
+			"AccessId":	"030abd2d889d4594a8212ee3a45471cc",
+			"AccessKey":	"ejAfYBaDgpc0sR2bbRBJQVDqLhRh6UGtXcOPuvm+TbJ0jrHPlZPrEKSYbFLoCa/8",
+			"Token":	"d504bcf61d174259a78659b4eb00ea3e"
+			}
+}

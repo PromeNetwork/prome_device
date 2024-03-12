@@ -1,0 +1,17 @@
+
+add_definitions(-w)
+
+set(EX_HEAD_FILE ${CMAKE_CURRENT_SOURCE_DIR}/csqlite3.h)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR} DB_SRC)
+
+
+add_library(database SHARED ${DB_SRC})
+
+# TARGET_LINK_LIBRARIES(database ${LIB_PATH}/libsqlite3.so)
+
+SET_TARGET_PROPERTIES(database PROPERTIES VERSION ${SW_VERSION} SOVERSION 1)
+INSTALL(TARGETS database LIBRARY DESTINATION lib)
+INSTALL(FILES ${EX_HEAD_FILE} DESTINATION ${INC_PATH}/database)
+
+
+
