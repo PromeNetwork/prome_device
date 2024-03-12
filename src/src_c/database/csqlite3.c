@@ -78,7 +78,7 @@ int sql_exec(sqlite3 *db, sql_callback callback,
 		ret = sqlite3_exec(db, sql, callback, para, &errMsg);
 		if( ret != SQLITE_OK )
 		{
-			LOG_PRINT( WX_LOG_ERROR, "SQL ERROR %d [%s] %s ", ret, errMsg, sql);
+			LOG_PRINT(   Prome_LOG_ERROR, "SQL ERROR %d [%s] %s ", ret, errMsg, sql);
 			if( strstr(errMsg, "database is locked") )
 			{
 				sleep(1);
@@ -100,7 +100,7 @@ int sql_exec(sqlite3 *db, sql_callback callback,
 	ret = sqlite3_exec(db, sql, callback, para, &errMsg);
 	if( ret != SQLITE_OK )
 	{
-		LOG_PRINT( WX_LOG_ERROR, "SQL ERROR %d [%s] %s ", ret, errMsg, sql);
+		LOG_PRINT(   Prome_LOG_ERROR, "SQL ERROR %d [%s] %s ", ret, errMsg, sql);
 		if (errMsg)
 		{
 			sqlite3_free(errMsg);
@@ -138,7 +138,7 @@ int sql_get_int_field(sqlite3 *db, const char *fmt, ...)
 		case SQLITE_OK:
 			break;
 		default:
-			LOG_PRINT(WX_LOG_ERROR, "prepare failed: %s\n%s\n", 
+			LOG_PRINT(  Prome_LOG_ERROR, "prepare failed: %s\n%s\n",
 					  sqlite3_errmsg(db), sql);
 			sqlite3_free(sql);
 			va_end(ap);
@@ -171,7 +171,7 @@ int sql_get_int_field(sqlite3 *db, const char *fmt, ...)
 			//printf("sql ret = %d \n", ret);
 			break;
 		default:
-			LOG_PRINT(WX_LOG_ERROR, "%s: step failed: %s\n", __func__, 
+			LOG_PRINT(  Prome_LOG_ERROR, "%s: step failed: %s\n", __func__,
 					  sqlite3_errmsg(db));
 			ret = -1;
 			break;
@@ -190,7 +190,7 @@ int sql_database_init(char *db_name, sqlite3 **ppDb)
 {
 	if( sqlite3_open(db_name, ppDb) != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Failed to open sqlite database!\n");
+		LOG_PRINT(  Prome_LOG_ERROR, "Failed to open sqlite database!\n");
 		return -1;
 	}
 
@@ -201,7 +201,7 @@ int sql_database_deinit(char *db_name, sqlite3 *db)
 {
 	if( sqlite3_close(db) != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Failed to close sqlite database!\n");
+		LOG_PRINT(  Prome_LOG_ERROR, "Failed to close sqlite database!\n");
 		return -1;
 	}
 
@@ -250,7 +250,7 @@ int sql_create_table(sqlite3 *db, char *table_name,
 		ret = sql_exec(db, NULL, NULL, db_cmd);
 		if( ret != SQLITE_OK )
 		{
-			LOG_PRINT(WX_LOG_ERROR, "Error creating table %s!\n", table_name);
+			LOG_PRINT(  Prome_LOG_ERROR, "Error creating table %s!\n", table_name);
 			return -1;
 		}
 	}
@@ -303,7 +303,7 @@ int sql_create_table_auto_key(sqlite3 *db, char *table_name,
 		ret = sql_exec(db, NULL, NULL, db_cmd);
 		if( ret != SQLITE_OK )
 		{
-			LOG_PRINT(WX_LOG_ERROR, "Error creating table %s!\n", table_name);
+			LOG_PRINT(  Prome_LOG_ERROR, "Error creating table %s!\n", table_name);
 			return -1;
 		}
 	}
@@ -332,7 +332,7 @@ int sql_create_table_just_primary_key(sqlite3 *db, char *table_name,
 	ret = sql_exec(db, NULL, NULL, db_cmd);
 	if( ret != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Error creating table %s!\n", table_name);
+		LOG_PRINT(  Prome_LOG_ERROR, "Error creating table %s!\n", table_name);
 		return -1;
 	}
 	
@@ -352,7 +352,7 @@ int sql_add_column_to_table(sqlite3 *db, char *table_name, sql_key *column)
 	ret = sql_exec(db, NULL, NULL, db_cmd);
 	if( ret != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Error add column %s to table %s !\n", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Error add column %s to table %s !\n",
 				  column->key_str, table_name);
 		return -1;
 	}
@@ -409,7 +409,7 @@ int sql_insert_column_data(sqlite3 *db, char *table_name,
 	ret = sql_exec(db, NULL, NULL, db_cmd);
 	if( ret != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Error insert column to table %s!\n", table_name);
+		LOG_PRINT(  Prome_LOG_ERROR, "Error insert column to table %s!\n", table_name);
 		return -1;
 	}
 	
@@ -438,7 +438,7 @@ int sql_insert_column_data_just_primary_key(sqlite3 *db, char *table_name,
 	ret = sql_exec(db, NULL, NULL, db_cmd);
 	if( ret != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Error insert  %s data to table %s !\n", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Error insert  %s data to table %s !\n",
 				  pri_key->key_str, table_name);
 		return -1;
 	}
@@ -487,7 +487,7 @@ int sql_update_key_data(sqlite3 *db, char *table_name,
 	ret = sql_exec(db, NULL, NULL, db_cmd);
 	if( ret != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Error insert  %s data to table %s !\n", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Error insert  %s data to table %s !\n",
 				  key->key_str, table_name);
 		return -1;
 	}
@@ -578,7 +578,7 @@ int sql_search_key(sqlite3 *db, char *table_name, sql_key *pri_key,
 	ret = sql_exec(db, callback, para, db_cmd);
 	if( ret != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Error search table %s !\n", table_name);
+		LOG_PRINT(  Prome_LOG_ERROR, "Error search table %s !\n", table_name);
 		return -1;
 	}
 	
@@ -626,7 +626,7 @@ int sql_search_range(sqlite3 *db, char *table_name, sql_key *range,
 	ret = sql_exec(db, callback, para, db_cmd);
 	if( ret != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Error search table %s !\n", table_name);
+		LOG_PRINT(  Prome_LOG_ERROR, "Error search table %s !\n", table_name);
 		return -1;
 	}
 	
@@ -675,7 +675,7 @@ int sql_search_last_record(sqlite3 *db, char *table_name, sql_key *range,
 	ret = sql_exec(db, callback, para, db_cmd);
 	if( ret != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Error search table %s !\n", table_name);
+		LOG_PRINT(  Prome_LOG_ERROR, "Error search table %s !\n", table_name);
 		return -1;
 	}
 
@@ -700,7 +700,7 @@ int sql_traversal_table(sqlite3 *db, char *table_name, sql_key *pri_key,
 	ret = sql_exec(db, callback, para, db_cmd);
 	if( ret != SQLITE_OK )
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Error traversal table %s !\n", table_name);
+		LOG_PRINT(  Prome_LOG_ERROR, "Error traversal table %s !\n", table_name);
 		return -1;
 	}
 

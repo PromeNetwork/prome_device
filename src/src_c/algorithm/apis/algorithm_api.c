@@ -1,12 +1,12 @@
 /***********************************************************************************
  * @file   			: algorithm_api.c
- * @author   		: xqchen
+
  * @date   			: 2020-9-15
  * @Description   	: This file provides the underlying algorithm interface.
                       Including the following algorithms: hash, signature encry-
                       ption, key pair generation, public key recovery, Base64 
                       encoding and decoding.
- * @Copyright   	: Copyright (c) 2008-2020  Shanghai Wanxiang Blockchain Inc.
+ * @Copyright   	: Copyright (c) 2008-2020
  * @other   		: 
  * @note History 	: 
 ***********************************************************************************/
@@ -32,7 +32,7 @@
 
 /*****************************************************************************
  * @Function	: file_size
- * @author		: xqchen
+
  * @date		: 2020-8-10
  * @brief       : get the file size
  * @param[in]  	: UINT8 *file  file name
@@ -62,7 +62,7 @@ static UINT32 file_size(UINT8 *file)
 
 /*****************************************************************************
  * @Function	: file_read
- * @author		: xqchen
+
  * @date		: 2020-8-10
  * @brief       : Read data the of the file
  * @param[in]  	: UINT8 *file       the file to read 
@@ -107,7 +107,7 @@ static ERR_CODE file_read(UINT8 *file, UINT32 read_size, UINT8 *filebuff)
 
 /*****************************************************************************
  * @Function	: DataHash
- * @author		: xqchen
+
  * @date		: 2020-8-10
  * @brief       : Calculate the hash value of text data, using the specified
                   hash algorithm;
@@ -156,7 +156,7 @@ UINT32 DataHash( UINT8 *data, UINT32 len, HASH_TYPE hash_method, UINT8 *hash )
 
 /*****************************************************************************
  * @Function	: FileHash
- * @author		: xqchen
+
  * @date		: 2020-8-10
  * @brief       : Calculate the hash value of the file, using the specified
                   hash algorithm;
@@ -271,7 +271,7 @@ ERR_CODE DataSignature(UINT8 *data, UINT32 data_len, SIGN_TYPE sign_method,
 #if 1
 /*****************************************************************************
  * @Function	: DataEncryption
- * @author 	 	: xqchen
+ * @author 	 	:
  * @date		: 2020-8-10
  * @brief		: Encrypt the data, using the specified encryption algorithm
  * @param[in]	: UINT8 *data			  Data to be encrypted
@@ -494,7 +494,7 @@ UINT8 *DataDecryption(UINT8 *data, UINT32 data_len, ENC_TYPE enc_method,
 #else
 /*****************************************************************************
  * @Function	: DataEncryption
- * @author 	 	: xqchen
+ * @author 	 	:
  * @date		: 2020-8-10
  * @brief		: Encrypt the data, using the specified encryption algorithm
  * @param[in]	: UINT8 *data			  Data to be encrypted
@@ -632,7 +632,7 @@ UINT8 *DataDecryption(UINT8 *data, UINT32 data_len, ENC_TYPE enc_method,
 
 /*****************************************************************************
  * @Function	: ShareKeyCalc
- * @author		: xqchen
+
  * @date		: 2020-8-10
  * @brief		: Calculate the shared key, using the private key of the
  				  data sending and the public key of the data receiver
@@ -671,7 +671,7 @@ ERR_CODE ShareKeyCalc(UINT8 *r_pub_key, UINT8 *s_pri_key,
 
 /*****************************************************************************
  * @Function	: PublicKeyRecover
- * @author		: xqchen
+
  * @date		: 2020-8-27
  * @brief       : Recover an ECDSA public key from a signature
  * @param[in]  	: UINT8 *sig      data signture
@@ -704,7 +704,7 @@ ERR_CODE PublicKeyRecover(ENC_TYPE enc_method, UINT8 *sig, UINT8 *msg,
 
 /*****************************************************************************
  * @Function	: KeyPairCreate
- * @author		: xqchen
+
  * @date		: 2020-9-14
  * @brief       : Key pair generation function
  				  The function automatically generates a random number and uses 

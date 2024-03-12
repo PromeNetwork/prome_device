@@ -167,11 +167,11 @@ void PreReceiverThreadStart()
 	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED); 
 	if (!pthread_create(&tid, &attr, pre_receiver_listen, NULL))
     {
-        //LOG_PRINT(WX_LOG_INFO, "Create receiver listen thread OK!");
+        //LOG_PRINT(  Prome_LOG_INFO, "Create receiver listen thread OK!");
     }
     else
     {
-        //LOG_PRINT(WX_LOG_ERROR, "Create receiver listen thread fail!");
+        //LOG_PRINT(  Prome_LOG_ERROR, "Create receiver listen thread fail!");
     }
 	pthread_attr_destroy(&attr);
 	sleep(1);

@@ -10,7 +10,7 @@ import (
 )
 
 /*
- * Copyright (C) 2020 WXBlockchain PlatONE
+ * Copyright (C) 2020   PlatONE
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by

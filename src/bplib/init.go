@@ -15,7 +15,7 @@ import (
 	"unsafe"
 )
 
-const ProofUser = "WXblockchain"
+const ProofUser = " "
 
 func initMap(JsonFile string, m map[int]RenderedStandard) error {
 	var reader []Standard

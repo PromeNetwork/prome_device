@@ -239,13 +239,13 @@ UINT32 GatewayUpgradeCfgCb(void *handle, void *data, UINT32 len, UINT64 request_
 	ret = gateway_upgrade_cfg_prase(dev, (UINT8 *)data, &cfg->upgrade);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_INFO, "Device %s parse upgrade config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s parse upgrade config fail.", dev->device_id);
 		//status = STATUS_UPGRADE_FAIL;
 	}
 	else
 	{
 
-		LOG_PRINT(WX_LOG_INFO, "Device %s parse upgrade config ok.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s parse upgrade config ok.", dev->device_id);
 		//status = STATUS_SUCCESS;
 	}
 
@@ -1114,12 +1114,12 @@ void GatewayTimeRequestStart(void *handle)
 	if (!pthread_create(&dev->timesync_tid, &attr, 
 						gateway_time_request, (void *)dev))
     {
-        LOG_PRINT(WX_LOG_INFO, "Create %s request time thread OK!", 
+        LOG_PRINT(  Prome_LOG_INFO, "Create %s request time thread OK!",
 							 dev->device_id);
     }
     else
     {
-        LOG_PRINT(WX_LOG_ERROR, "Create %s request time thread fail!", 
+        LOG_PRINT(  Prome_LOG_ERROR, "Create %s request time thread fail!",
 							  dev->device_id);
     }
 	pthread_attr_destroy(&attr);
@@ -1202,12 +1202,12 @@ void GatewayLogSendStart(void *handle)
 	if (!pthread_create(&dev->log_tid, &attr, 
 						gateway_log_send, (void *)dev))
     {
-        LOG_PRINT(WX_LOG_INFO, "Create %s log send thread OK!", 
+        LOG_PRINT(  Prome_LOG_INFO, "Create %s log send thread OK!",
 							 dev->device_id);
     }
     else
     {
-        LOG_PRINT(WX_LOG_ERROR, "Create %s log send thread fail!", 
+        LOG_PRINT(  Prome_LOG_ERROR, "Create %s log send thread fail!",
 							  dev->device_id);
     }
 	pthread_attr_destroy(&attr);
@@ -1336,14 +1336,14 @@ UINT32 GatewayCfgInit(void *handle)
 	filebuff = ReadFileAll(dev->cfg_file);
 	if(filebuff == NULL)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Read file %s fail, maybe not exist or empty!", dev->cfg_file);
+		LOG_PRINT(  Prome_LOG_ERROR, "Read file %s fail, maybe not exist or empty!", dev->cfg_file);
 		return 1;
 	}
 
 	ret = DeviceCfgIdParse(dev, filebuff, &dev->cfg_id);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
@@ -1352,7 +1352,7 @@ UINT32 GatewayCfgInit(void *handle)
 	ret = DeviceMqttCfgInit(dev, filebuff);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
@@ -1361,7 +1361,7 @@ UINT32 GatewayCfgInit(void *handle)
 	ret = DeviceCfgChainParse(dev, filebuff);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
@@ -1370,14 +1370,14 @@ UINT32 GatewayCfgInit(void *handle)
 	ret = gateway_devlist_parse(dev, filebuff, cfg);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
 
 	SAFE_FREE(filebuff);
 
-	LOG_PRINT(WX_LOG_INFO, "Device %s init config ok.", dev->device_id);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s init config ok.", dev->device_id);
 
 	DeviceCfgIdSave(dev, DEV_DEFAULT_CFG);
 	DeviceCfgChainSave(dev, DEV_DEFAULT_CFG);
@@ -1406,9 +1406,9 @@ UINT32 GatewayCfgRecvCb(void *handle, void *data, UINT32 data_len)
 
 	dev = (DEV_DRIVER *)handle;
 
-	LOG_PRINT(WX_LOG_INFO, "Device %s receiver config.", dev->device_id);
-	//LOG_PRINT(WX_LOG_INFO, "%s", data);
-	LOG_PRINT(WX_LOG_INFO, "Device %s start parse config.", dev->device_id);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s receiver config.", dev->device_id);
+	//LOG_PRINT(  Prome_LOG_INFO, "%s", data);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s start parse config.", dev->device_id);
 	
 	ret = DeviceCfgIdParse(dev, data, &cfgid);
 	if(ret)
@@ -1416,16 +1416,16 @@ UINT32 GatewayCfgRecvCb(void *handle, void *data, UINT32 data_len)
 		/*响应服务器配置下发*/
 		status = STATUS_READ_CONFIG_FAIL;
 		DevicePkgCfgRes(dev, data, data_len, status);
-		LOG_PRINT(WX_LOG_ERROR, "Device %s parse config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse config fail.", dev->device_id);
 		return 0;
 	}
 	
 	if(cfgid == dev->cfg_id)
 	{/*配置ID相同，则认为配置相同无需更新，不做任何操作*/
-		LOG_PRINT(WX_LOG_INFO, "The running config is same as the received.");
+		LOG_PRINT(  Prome_LOG_INFO, "The running config is same as the received.");
 		/*响应服务器配置下发*/
 		DevicePkgCfgRes(dev, data, data_len, status);
-		LOG_PRINT(WX_LOG_INFO, "Device %s parse config ok.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config ok.", dev->device_id);
 		return 0;
 	}
 	else
@@ -1438,7 +1438,7 @@ UINT32 GatewayCfgRecvCb(void *handle, void *data, UINT32 data_len)
 			/*响应服务器配置下发*/
 			status = STATUS_READ_CONFIG_FAIL;
 			DevicePkgCfgRes(dev, data, data_len, status);
-			LOG_PRINT(WX_LOG_ERROR, "Device %s parse config fail.", dev->device_id);
+			LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse config fail.", dev->device_id);
 			return 0;
 		}
 		
@@ -1450,17 +1450,17 @@ UINT32 GatewayCfgRecvCb(void *handle, void *data, UINT32 data_len)
 			/*响应服务器配置下发*/
 			status = STATUS_READ_CONFIG_FAIL;
 			DevicePkgCfgRes(dev, data, data_len, status);
-			LOG_PRINT(WX_LOG_ERROR, "Device %s parse config fail.", dev->device_id);
+			LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse config fail.", dev->device_id);
 			return 0;
 		}
 
 		/*配置未发生改变*/
 		if((cfg_result == 0) && (dev_result == 0))
 		{
-			LOG_PRINT(WX_LOG_INFO, "The running config is same as the received.");
+			LOG_PRINT(  Prome_LOG_INFO, "The running config is same as the received.");
 			/*响应服务器配置下发*/
 			DevicePkgCfgRes(dev, data, data_len, status);
-			LOG_PRINT(WX_LOG_INFO, "Device %s parse config ok.", dev->device_id);
+			LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config ok.", dev->device_id);
 			return 0;
 		}
 
@@ -1491,7 +1491,7 @@ UINT32 GatewayCfgRecvCb(void *handle, void *data, UINT32 data_len)
 
 		/*响应服务器配置下发*/
 		DevicePkgCfgRes(dev, data, data_len, status);
-		LOG_PRINT(WX_LOG_INFO, "Device %s parse config ok.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config ok.", dev->device_id);
 		
 		GatewayDevlistStart(handle);
 	}
@@ -1586,9 +1586,9 @@ INT32 GatewayMqttCfgRecvCb(void *handle, void *data, UINT32 data_len, UINT64 req
 
 	dev = (DEV_DRIVER *)handle;
 
-	LOG_PRINT(WX_LOG_INFO, "Device %s receiver mqtt config.", dev->device_id);
-	//LOG_PRINT(WX_LOG_INFO, "%s", data);
-	LOG_PRINT(WX_LOG_INFO, "Device %s start parse mqtt config.", dev->device_id);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s receiver mqtt config.", dev->device_id);
+	//LOG_PRINT(  Prome_LOG_INFO, "%s", data);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s start parse mqtt config.", dev->device_id);
 
 	ret = DeviceMqttCfgParse(dev, data, 1);
 	if(ret > 0)
@@ -1601,13 +1601,13 @@ INT32 GatewayMqttCfgRecvCb(void *handle, void *data, UINT32 data_len, UINT64 req
 	}
 	else if(ret == 0)
 	{/*MQTT配置无变化*/
-		LOG_PRINT(WX_LOG_INFO, "The running mqtt config is same as the received.");
+		LOG_PRINT(  Prome_LOG_INFO, "The running mqtt config is same as the received.");
 		need_restart = 0;
 	}
 	else
 	{/*MQTT配置解析出错*/
 		dev->dev_status = STATUS_READ_CONFIG_FAIL;
-		LOG_PRINT(WX_LOG_ERROR, "Device %s parse mqtt config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse mqtt config fail.", dev->device_id);
 		need_restart = 0;
 	}
 

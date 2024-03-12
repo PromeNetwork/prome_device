@@ -1,11 +1,11 @@
 /***********************************************************************************
  * @file   			: algorithm_api.h
- * @author   		: xqchen
+
  * @date   			: 2020-9-15
  * @Description   	: This header file mainly defines the data structure,
                       macro and external interface of algorithm layer.
                      
- * @Copyright   	: Copyright (c) 2008-2020   Shanghai Wanxiang Blockchain Inc.
+
  * @other   		: 
  * @note History 	: 
 ***********************************************************************************/
@@ -66,7 +66,7 @@ typedef enum
 
 /*****************************************************************************
  * @Function	: DataHash
- * @author		: xqchen
+
  * @date		: 2020-8-10
  * @brief       : Calculate the hash value of text data, using the specified
                   hash algorithm;
@@ -84,7 +84,7 @@ UINT32 DataHash( UINT8 *data, UINT32 len, HASH_TYPE hash_method, UINT8 *hash );
 
 /*****************************************************************************
  * @Function	: FileHash
- * @author		: xqchen
+
  * @date		: 2020-8-10
  * @brief       : Calculate the hash value of the file, using the specified
                   hash algorithm;
@@ -122,7 +122,7 @@ ERR_CODE DataSignature(UINT8 *data, UINT32 data_len, SIGN_TYPE sign_method,
 
 /*****************************************************************************
  * @Function	: DataEncryption
- * @author 	 	: xqchen
+ * @author 	 	:
  * @date		: 2020-8-10
  * @brief		: Encrypt the data, using the specified encryption algorithm
  * @param[in]	: UINT8 *data			  Data to be encrypted
@@ -144,7 +144,7 @@ UINT8 *DataDecryption(UINT8 *data, UINT32 data_len, ENC_TYPE enc_method,
 
 /*****************************************************************************
  * @Function	: ShareKeyCalc
- * @author		: xqchen
+
  * @date		: 2020-8-10
  * @brief		: Calculate the shared key, using the private key of the
  				  data sending and the public key of the data receiver
@@ -163,7 +163,7 @@ ERR_CODE ShareKeyCalc(UINT8 *r_pub_key, UINT8 *s_pri_key,
 
 /*****************************************************************************
  * @Function	: PublicKeyRecover
- * @author		: xqchen
+
  * @date		: 2020-8-27
  * @brief       : Recover an ECDSA public key from a signature
  * @param[in]  	: ENC_TYPE enc_method  encryption algorithm
@@ -212,7 +212,7 @@ UINT8 *DataBase64Encode(UINT8* data, UINT32 data_len);
 
 /*****************************************************************************
  * @Function	: KeyPairCreate
- * @author		: xqchen
+
  * @date		: 2020-9-14
  * @brief       : Key pair generation function
  				  The function automatically generates a random number and uses 

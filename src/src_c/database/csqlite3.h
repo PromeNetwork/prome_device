@@ -32,7 +32,7 @@ typedef int (*sql_callback)(void *para, int argc, char **argv, char **azColName)
  * Output	    : 无		                   										*
  * Return	    : 成功返回0，失败返回错误码                   								*
  * Comments	    : 创建数据库				                           					*
- * First Make	: 2019-11-30 xqchen							                   	*
+ * First Make	: 2019-11-30    							                   	*
  ********************************************************************************/ 
 int sql_database_init(char *db_name, sqlite3 **ppDb);
 int sql_database_deinit(char *db_name, sqlite3 *db);
@@ -47,7 +47,7 @@ int sql_database_deinit(char *db_name, sqlite3 *db);
  * Output	    : 无		                   										*
  * Return	    : 成功返回0，失败返回错误码                   								*
  * Comments	    : 创建数据库表				                           				*
- * First Make	: 2019-11-30 xqchen							                   	*
+ * First Make	: 2019-11-30    							                   	*
  ********************************************************************************/ 
 int sql_create_table(sqlite3 *db, char *table_name, sql_key *column, int col_num);
 int sql_create_table_auto_key(sqlite3 *db, char *table_name, sql_key *column, int col_num);
@@ -59,7 +59,7 @@ int sql_create_table_auto_key(sqlite3 *db, char *table_name, sql_key *column, in
  * Output	    : 无		                   										*
  * Return	    : 成功返回0，失败返回错误码                   								*
  * Comments	    : 创建一个只含主键的数据库表				                           			*
- * First Make	: 2019-11-30 xqchen							                   	*
+ * First Make	: 2019-11-30    							                   	*
  ********************************************************************************/ 
 int sql_create_table_just_primary_key(sqlite3 *db, char *table_name, sql_key *pri_key);
 
@@ -70,7 +70,7 @@ int sql_create_table_just_primary_key(sqlite3 *db, char *table_name, sql_key *pr
  * Output	    : 无		                   										*
  * Return	    : 成功返回0，失败返回错误码                   								*
  * Comments	    : 向	数据库表	table_name中增加一列		                           		*
- * First Make	: 2019-11-30 xqchen							                   	*
+ * First Make	: 2019-11-30    							                   	*
  ********************************************************************************/ 
 int sql_add_column_to_table(sqlite3 *db, char *table_name, sql_key *column);
 
@@ -83,7 +83,7 @@ int sql_add_column_to_table(sqlite3 *db, char *table_name, sql_key *column);
  * Output	    : 无		                   										*
  * Return	    : 成功返回0，失败返回错误码                   								*
  * Comments	    : 向	数据库表	table_name中插入一列数据	                           		*
- * First Make	: 2019-11-30 xqchen							                   	*
+ * First Make	: 2019-11-30    							                   	*
  ********************************************************************************/ 
 int sql_insert_column_data(sqlite3 *db, char *table_name, sql_key *column, int col_num);
 
@@ -94,7 +94,7 @@ int sql_insert_column_data(sqlite3 *db, char *table_name, sql_key *column, int c
  * Output	    : 无		                   										*
  * Return	    : 成功返回0，失败返回错误码                   								*
  * Comments	    : 向	数据库表	table_name中插入一列数据，此列数据只含主键的相关数据           			*
- * First Make	: 2019-11-30 xqchen							                   	*
+ * First Make	: 2019-11-30    							                   	*
  ********************************************************************************/ 
 int sql_insert_column_data_just_primary_key(sqlite3 *db, char *table_name, sql_key *pri_key);
 
@@ -106,7 +106,7 @@ int sql_insert_column_data_just_primary_key(sqlite3 *db, char *table_name, sql_k
  * Output	    : 无		                   										*
  * Return	    : 成功返回0，失败返回错误码                   								*
  * Comments	    : 更新表table_name中某一列数据						           			*
- * First Make	: 2019-11-30 xqchen							                   	*
+ * First Make	: 2019-11-30    							                   	*
  ********************************************************************************/ 
 int sql_update_key_data(sqlite3 *db, char *table_name, sql_key *pri_key, sql_key *key);
 
@@ -119,7 +119,7 @@ int sql_update_key_data(sqlite3 *db, char *table_name, sql_key *pri_key, sql_key
  * Output	    : 无		                   										*
  * Return	    : 存在返回1，不存在返回0                   								*
  * Comments	    : 查找表table_name中	是否存在	pri_key信息		           			*
- * First Make	: 2019-11-30 xqchen							                   	*
+ * First Make	: 2019-11-30    							                   	*
  ********************************************************************************/ 
 int sql_search_key(sqlite3 *db, char *table_name, sql_key *pri_key, sql_callback callback, void *para);
 
@@ -130,7 +130,7 @@ int sql_search_key(sqlite3 *db, char *table_name, sql_key *pri_key, sql_callback
  * Output	    : 无		                   										*
  * Return	    : 存在返回1，不存在返回0                   								*
  * Comments	    : 查找表table_name中	是否存在	pri_key信息		           			*
- * First Make	: 2019-11-30 xqchen							                   	*
+ * First Make	: 2019-11-30    							                   	*
  ********************************************************************************/ 
 int sql_check_key_exist(sqlite3 *db, char *table_name, sql_key *column, int col_num);
 
@@ -142,7 +142,7 @@ int sql_check_key_exist(sqlite3 *db, char *table_name, sql_key *column, int col_
  * Output	    : 无		                   										*
  * Return	    : 成功返回0，失败返回错误码                   								*
  * Comments	    : 遍历表table_name并按照主键降序排序，返回信息由callback函数处理	           			*
- * First Make	: 2019-11-30 xqchen							                   	*
+ * First Make	: 2019-11-30    							                   	*
  ********************************************************************************/ 
 int sql_traversal_table(sqlite3 *db, char *table_name, sql_key *pri_key, sql_callback callback, void *para, int order);
 

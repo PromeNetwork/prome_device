@@ -46,7 +46,7 @@ int http_post(char *url, char *data_in, int len, void *data_out, char *token)
 	curl_handle = curl_easy_init();
 	if (!curl_handle)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "curl easy init failed");
+		LOG_PRINT(  Prome_LOG_ERROR, "curl easy init failed");
 		ret = -1;
 		return ret;
 	}
@@ -78,7 +78,7 @@ int http_post(char *url, char *data_in, int len, void *data_out, char *token)
 	curl_res = curl_easy_perform(curl_handle);
 	if(curl_res != CURLE_OK)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "curl_easy_perform error, err_msg:[%d]", curl_res);
+		LOG_PRINT(  Prome_LOG_ERROR, "curl_easy_perform error, err_msg:[%d]", curl_res);
 		ret = -1;
 	}
 
@@ -146,7 +146,7 @@ int http_post_file_octetstream(char *url, HTTP_POST_FORM *form, UINT32 form_num,
 	curl_handle = curl_easy_init();
 	if (!curl_handle)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "curl easy init failed");
+		LOG_PRINT(  Prome_LOG_ERROR, "curl easy init failed");
 		return 1;
 	}
 
@@ -208,7 +208,7 @@ int http_post_file_multipart(char *url, UINT8 *filename, void *data_out, char *t
 	curl_handle = curl_easy_init(); 
 	if (!curl_handle)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "curl easy init failed");
+		LOG_PRINT(  Prome_LOG_ERROR, "curl easy init failed");
 		return -1;
 	}
 
@@ -268,11 +268,11 @@ int http_get(char *url, void *data_out)
 	CURLcode curl_res;
 	int ret = 0;
 	
-	//curl初始�?
+	//curl初始�?
 	curl_handle = curl_easy_init(); 
 	if (!curl_handle)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "curl easy init failed");
+		LOG_PRINT(  Prome_LOG_ERROR, "curl easy init failed");
 		return -1;
 	}
 
@@ -299,7 +299,7 @@ int http_get(char *url, void *data_out)
 	curl_res = curl_easy_perform(curl_handle); 
 	if(curl_res != CURLE_OK)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "curl_easy_perform() failed: %s", curl_easy_strerror(curl_res));
+		LOG_PRINT(  Prome_LOG_ERROR, "curl_easy_perform() failed: %s", curl_easy_strerror(curl_res));
 		ret  = -1;
 	}
 
@@ -318,7 +318,7 @@ int http_init(void)
 	//  printf("param is: %s\n", param);
 	if(curl_res != CURLE_OK)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "CURL ERROR : %s", curl_easy_strerror(curl_res));
+		LOG_PRINT(  Prome_LOG_ERROR, "CURL ERROR : %s", curl_easy_strerror(curl_res));
 		return -1;
 	}
 
@@ -444,7 +444,7 @@ int http_download_file(char *urlPath, char *localpath)
 	CURLcode retcCode = curl_easy_perform(curl);
 	if(retcCode != CURLE_OK)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "curl_easy_perform() failed: %s", curl_easy_strerror(retcCode));
+		LOG_PRINT(  Prome_LOG_ERROR, "curl_easy_perform() failed: %s", curl_easy_strerror(retcCode));
 	}
 	//查看是否有出错信息  
 	//const char* pError = curl_easy_strerror(retcCode);

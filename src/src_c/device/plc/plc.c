@@ -165,14 +165,14 @@ UINT32 PlcTaskStop(DEVICE_INFO *dev)
 	tmp = ThreadSearch(thread->argc, thread->argv);
 	if(tmp == NULL)
 	{
-		LOG_PRINT(WX_LOG_INFO, "Running task %s not find ...", thread->task_name);
+		LOG_PRINT(  Prome_LOG_INFO, "Running task %s not find ...", thread->task_name);
 		ThreadArgFree(thread);
 		SAFE_FREE(thread);
 		plc_cfg_clean(dev);
 		return 1;
 	}
 
-	LOG_PRINT(WX_LOG_INFO, "Running task %s find ...", thread->task_name); 
+	LOG_PRINT(  Prome_LOG_INFO, "Running task %s find ...", thread->task_name);
 	//PrintThreadInfo(tmp);
 	ThreadStop(tmp);
 	plc_cfg_clean(dev);
@@ -245,18 +245,18 @@ UINT32 PlcCfgInit(void *handle)
 	}
 	dev = (DEV_DRIVER *)handle;
 
-	/*¶Á³öÅäÖÃÎÄ¼þÖÐËùÓÐÄÚÈÝ*/
+	/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	filebuff = ReadFileAll(dev->cfg_file);
 	if(filebuff == NULL)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Read file %s fail, maybe not exist or empty!", dev->cfg_file);
+		LOG_PRINT(  Prome_LOG_ERROR, "Read file %s fail, maybe not exist or empty!", dev->cfg_file);
 		return 1;
 	}
 
 	ret = DeviceCfgIdParse(dev, filebuff, &dev->cfg_id);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
@@ -266,23 +266,23 @@ UINT32 PlcCfgInit(void *handle)
 	ret = DeviceMqttCfgInit(dev, filebuff);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
 
-	/*?a???¨´¡À?????*/
+	/*?a???ï¿½ï¿½ï¿½ï¿½?????*/
 	ret = DeviceCfgChainParse(dev, filebuff);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
 
 	SAFE_FREE(filebuff);
 
-	LOG_PRINT(WX_LOG_INFO, "Device %s init config ok.", dev->device_id);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s init config ok.", dev->device_id);
 	return 0;
 	
 }
@@ -303,61 +303,61 @@ UINT32 PlcCfgRecvCb(void *handle, void *data, UINT32 data_len)
 
 	dev = (DEV_DRIVER *)handle;
 
-	LOG_PRINT(WX_LOG_INFO, "Device %s receiver config.", dev->device_id);
-	//LOG_PRINT(WX_LOG_INFO, "%s", data);
-	LOG_PRINT(WX_LOG_INFO, "Device %s start parse config.", dev->device_id);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s receiver config.", dev->device_id);
+	//LOG_PRINT(  Prome_LOG_INFO, "%s", data);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s start parse config.", dev->device_id);
 	
 	ret = DeviceCfgIdParse(dev, data, &cfgid);
 	if(ret)
 	{
-		/*?¨¬¨®|¡¤t???¡Â??????¡¤¡é*/
+		/*?ï¿½ï¿½ï¿½ï¿½|ï¿½ï¿½t???ï¿½ï¿½??????ï¿½ï¿½ï¿½ï¿½*/
 		status = STATUS_READ_CONFIG_FAIL;
 		DevicePkgCfgRes(dev, data, data_len, status);
-		LOG_PRINT(WX_LOG_INFO, "Device %s parse config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config fail.", dev->device_id);
 		return 0;
 	}
 	
 	if(cfgid == dev->cfg_id)
 	{
-		/*????ID?¨¤¨ª?¡ê??¨°¨¨??a?????¨¤¨ª??TD¨¨?¨¹D?¡ê?2?¡Á?¨¨?o?2¨´¡Á¡Â*/
-		LOG_PRINT(WX_LOG_INFO, "The running config is same as the received.");
-		/*?¨¬¨®|¡¤t???¡Â??????¡¤¡é*/
+		/*????ID?ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½??a?????ï¿½ï¿½ï¿½ï¿½??TDï¿½ï¿½?ï¿½ï¿½D?ï¿½ï¿½?2?ï¿½ï¿½?ï¿½ï¿½?o?2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
+		LOG_PRINT(  Prome_LOG_INFO, "The running config is same as the received.");
+		/*?ï¿½ï¿½ï¿½ï¿½|ï¿½ï¿½t???ï¿½ï¿½??????ï¿½ï¿½ï¿½ï¿½*/
 		DevicePkgCfgRes(dev, data, data_len, status);
-		LOG_PRINT(WX_LOG_INFO, "Device %s parse config ok.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config ok.", dev->device_id);
 		return 0;
 	}
 	else
-	{/*????ID2?¨ª?¡ê??¨°?a??????*/
+	{/*????ID2?ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?a??????*/
 		
-		/*?a???¨´¡À?????*/
+		/*?a???ï¿½ï¿½ï¿½ï¿½?????*/
 		cfg_result = DeviceCfgChainParse(dev, data);
 		if(cfg_result < 0)
 		{
-			/*?¨¬¨®|¡¤t???¡Â??????¡¤¡é*/
+			/*?ï¿½ï¿½ï¿½ï¿½|ï¿½ï¿½t???ï¿½ï¿½??????ï¿½ï¿½ï¿½ï¿½*/
 			status = STATUS_READ_CONFIG_FAIL;
 			DevicePkgCfgRes(dev, data, data_len, status);
-			LOG_PRINT(WX_LOG_INFO, "Device %s parse config fail.", dev->device_id);
+			LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config fail.", dev->device_id);
 			return 1;
 		}
 		else if(cfg_result == 0)
 		{
-			LOG_PRINT(WX_LOG_INFO, "The running config is same as the received.");
-			/*?¨¬¨®|¡¤t???¡Â??????¡¤¡é*/
+			LOG_PRINT(  Prome_LOG_INFO, "The running config is same as the received.");
+			/*?ï¿½ï¿½ï¿½ï¿½|ï¿½ï¿½t???ï¿½ï¿½??????ï¿½ï¿½ï¿½ï¿½*/
 			DevicePkgCfgRes(dev, data, data_len, status);
-			LOG_PRINT(WX_LOG_INFO, "Device %s parse config ok.", dev->device_id);
+			LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config ok.", dev->device_id);
 			return 0;
 		}
 
-		/*¡À¡ê¡ä?????ID*/
+		/*ï¿½ï¿½ï¿½ï¿½ï¿½?????ID*/
 		dev->cfg_id = cfgid;
 		DeviceCfgIdSave(dev, dev->cfg_file);
 
-		/*¡À¡ê¡ä??¨´¡À?????*/
+		/*ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½?????*/
 		DeviceCfgChainSave(dev, dev->cfg_file);
 
-		/*?¨¬¨®|¡¤t???¡Â??????¡¤¡é*/
+		/*?ï¿½ï¿½ï¿½ï¿½|ï¿½ï¿½t???ï¿½ï¿½??????ï¿½ï¿½ï¿½ï¿½*/
 		DevicePkgCfgRes(dev, data, data_len, status);
-		LOG_PRINT(WX_LOG_INFO, "Device %s parse config ok.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config ok.", dev->device_id);
 	}
 
 	return 0;
@@ -401,25 +401,25 @@ INT32 PlcMqttCfgRecvCb(	 void *handle,
 
 	dev = (DEV_DRIVER *)handle;
 
-	LOG_PRINT(WX_LOG_INFO, "Device %s receiver mqtt config.", dev->device_id);
-	//LOG_PRINT(WX_LOG_INFO, "%s", data);
-	LOG_PRINT(WX_LOG_INFO, "Device %s start parse mqtt config.", dev->device_id);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s receiver mqtt config.", dev->device_id);
+	//LOG_PRINT(  Prome_LOG_INFO, "%s", data);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s start parse mqtt config.", dev->device_id);
 
 	ret = DeviceMqttCfgParse(dev, data, 1);
 	if(ret > 0)
-	{/*MQTT????¨®D??¡À?*/
+	{/*MQTT????ï¿½ï¿½D??ï¿½ï¿½?*/
 		DeviceMqttCfgSave((void *)dev, dev->cfg_file);
 		need_restart = 1;
 	}
 	else if(ret == 0)
-	{/*MQTT?????T¡À??¡¥*/
-		LOG_PRINT(WX_LOG_INFO, "The running mqtt config is same as the received.");
+	{/*MQTT?????Tï¿½ï¿½??ï¿½ï¿½*/
+		LOG_PRINT(  Prome_LOG_INFO, "The running mqtt config is same as the received.");
 		need_restart = 0;
 	}
 	else
-	{/*MQTT?????a??3?¡ä¨ª*/
+	{/*MQTT?????a??3?ï¿½ä¨ª*/
 		dev->dev_status = STATUS_READ_CONFIG_FAIL;
-		LOG_PRINT(WX_LOG_ERROR, "Device %s parse mqtt config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse mqtt config fail.", dev->device_id);
 		need_restart = 0;
 	}
 

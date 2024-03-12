@@ -31,7 +31,7 @@ UINT32 JsonPubkeyAdd(void *handle, data_package *pkg)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -58,7 +58,7 @@ UINT32 JsonDevIdAdd(void *handle, data_package *pkg)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -87,7 +87,7 @@ UINT32 JsonTimeStampAdd(void *handle, data_package *pkg, TIMESTAMP stamp)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -116,7 +116,7 @@ UINT32 JsonSignAdd(void *handle, data_package *pkg, UINT8 *sign)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -145,7 +145,7 @@ UINT32 JsonHumAdd(void *handle, data_package *pkg, double hum)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -174,7 +174,7 @@ UINT32 JsonTempAdd(void *handle, data_package *pkg, double temp)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -204,7 +204,7 @@ UINT32 JsonNodeIdAdd(void *handle, data_package *pkg, UINT32 id)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -233,7 +233,7 @@ UINT32 JsonPkgTypeAdd(void *handle, data_package *pkg, PKG_TYPE_E pkgtype)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -262,7 +262,7 @@ UINT32 JsonHashAdd(void *handle, data_package *pkg, UINT8 *hash)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -291,7 +291,7 @@ UINT32 JsonDevStatusAdd(void *handle, data_package *pkg, DEVICE_STATUS status)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -320,7 +320,7 @@ UINT32 JsonDescAdd(void *handle, data_package *pkg, UINT8 *desc)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -349,7 +349,7 @@ UINT32 JsonDevTypeAdd(void *handle, data_package *pkg, DEV_TYPE_E dev_type)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -378,7 +378,7 @@ UINT32 JsonRfidAdd(void *handle, data_package *pkg, UINT8 *rfid)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -407,7 +407,7 @@ UINT32 JsonAtidAdd(void *handle, data_package *pkg, UINT32 atid)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -436,7 +436,7 @@ UINT32 JsonRssiAdd(void *handle, data_package *pkg, double rssi)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -465,7 +465,7 @@ UINT32 JsonPicAdd(void *handle, data_package *pkg, UINT8 *pic)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -494,7 +494,7 @@ UINT32 JsonPicIdAdd(void *handle, data_package *pkg, UINT32 pic_id)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -523,7 +523,7 @@ UINT32 JsonPicHashAdd(void *handle, data_package *pkg, UINT8 *hash)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -557,7 +557,7 @@ UINT32 JsonSlaveIdAdd(void *handle, data_package *pkg, UINT32 slave_id)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -587,7 +587,7 @@ UINT32 JsonPortAdd(void *handle, data_package *pkg, UINT32 port)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -616,7 +616,7 @@ UINT32 JsonHostAdd(void *handle, data_package *pkg, UINT8 *host)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -645,7 +645,7 @@ UINT32 JsonUserAdd(void *handle, data_package *pkg, UINT8 *user)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -674,7 +674,7 @@ UINT32 JsonPwdAdd(void *handle, data_package *pkg, UINT8 *pwd)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -704,7 +704,7 @@ UINT32 JsonProtocolAdd(void *handle, data_package *pkg, UINT8 *protocol)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -730,7 +730,7 @@ UINT8 *JsonPubkeyGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -757,7 +757,7 @@ UINT8 *JsonDevIdGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -784,7 +784,7 @@ UINT8 *JsonTimeStampGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -811,7 +811,7 @@ UINT8 *JsonSignGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -838,7 +838,7 @@ UINT8 *JsonHumGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -865,7 +865,7 @@ UINT8 *JsonTempGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -892,7 +892,7 @@ UINT8 *JsonNodeIdGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -919,7 +919,7 @@ UINT8 *JsonTypeGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -946,7 +946,7 @@ UINT8 *JsonDevTypeGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -974,7 +974,7 @@ UINT8 *JsonRfidGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1001,7 +1001,7 @@ UINT8 *JsonAtidGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1028,7 +1028,7 @@ UINT8 *JsonRssiGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1055,7 +1055,7 @@ UINT8 *JsonPicGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1082,7 +1082,7 @@ UINT8 *JsonPicIdGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1109,7 +1109,7 @@ UINT8 *JsonPicHashGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1141,7 +1141,7 @@ UINT8 *JsonPortGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1168,7 +1168,7 @@ UINT8 *JsonHostGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1195,7 +1195,7 @@ UINT8 *JsonUserGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1222,7 +1222,7 @@ UINT8 *JsonPwdGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1249,7 +1249,7 @@ UINT8 *JsonProtocolGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1276,7 +1276,7 @@ UINT8 *JsonFileGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1303,7 +1303,7 @@ UINT8 *JsonFileTypeGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1343,7 +1343,7 @@ UINT32 JsonSoftVerAdd(void *handle, data_package *pkg)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -1369,7 +1369,7 @@ UINT8 *JsonSoftVerGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1408,7 +1408,7 @@ UINT32 JsonProcotolVerAdd(void *handle, data_package *pkg)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -1434,7 +1434,7 @@ UINT8 *JsonProcotolVerGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1462,7 +1462,7 @@ UINT8 *JsonSlaveIdGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1491,7 +1491,7 @@ UINT32 JsonEvidenceAdd(void *handle, data_package *pkg, UINT8 *data)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -1517,7 +1517,7 @@ UINT8 *JsonRetCodeGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1544,7 +1544,7 @@ UINT8 *JsonProofGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1573,7 +1573,7 @@ UINT32 JsonProofAdd(void *handle, data_package *pkg, UINT8 *proof)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -1600,7 +1600,7 @@ UINT32 JsonPidAdd(void *handle, data_package *pkg, UINT8 *pid)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -1627,7 +1627,7 @@ UINT8 *JsonRawDataGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1657,7 +1657,7 @@ UINT32 JsonRawDataAdd(void *handle, data_package *pkg, double data)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s addt data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s addt data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -1683,7 +1683,7 @@ UINT8 *JsonOnChainGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1710,7 +1710,7 @@ UINT8 *JsonDomainGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1737,7 +1737,7 @@ UINT8 *JsonAccessIdGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1764,7 +1764,7 @@ UINT8 *JsonAccessKeyGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1791,7 +1791,7 @@ UINT8 *JsonTokenGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1818,7 +1818,7 @@ UINT8 *JsonPrikeyGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1846,7 +1846,7 @@ UINT8 *JsonRawTypeGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1876,7 +1876,7 @@ UINT32 JsonRawTypeAdd(void *handle, data_package *pkg, UINT8 *type)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -1903,7 +1903,7 @@ UINT8 *JsonCodeGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1930,7 +1930,7 @@ UINT8 *JsonPutFileGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1957,7 +1957,7 @@ UINT8 *JsonGetFileGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -1984,7 +1984,7 @@ UINT8 *JsonIntervalGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2011,7 +2011,7 @@ UINT8 *JsonRuleNameGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2038,7 +2038,7 @@ UINT8 *JsonAlgNameGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2066,7 +2066,7 @@ UINT8 *JsonSamplesGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2093,7 +2093,7 @@ UINT8 *JsonRangeGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2120,7 +2120,7 @@ UINT8 *JsonUrlGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2147,7 +2147,7 @@ UINT8 *JsonBpIndexGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2176,7 +2176,7 @@ UINT8 *JsonCfgTypeGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2206,7 +2206,7 @@ UINT32 JsonCfgTypeAdd(void *handle, data_package *pkg, UINT8 *type)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -2236,7 +2236,7 @@ UINT32 JsonPrikeyAdd(void *handle, data_package *pkg, UINT8 *prikey)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -2265,7 +2265,7 @@ UINT32 JsonRuleNameAdd(void *handle, data_package *pkg, UINT8 *name)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -2294,7 +2294,7 @@ UINT32 JsonIntervalAdd(void *handle, data_package *pkg, UINT32 interval)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -2323,7 +2323,7 @@ UINT32 JsonAlgListAdd(void *handle, data_package *pkg, UINT8 *list)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -2352,7 +2352,7 @@ UINT32 JsonResqIdAdd(void *handle, data_package *pkg, UINT64 cfgid)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -2378,7 +2378,7 @@ UINT8 *JsonResqIdGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2408,7 +2408,7 @@ UINT32 JsonLogAdd(void *handle, data_package *pkg, UINT8 *log)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -2434,7 +2434,7 @@ UINT8 *JsonPollTimeGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2465,7 +2465,7 @@ UINT32 JsonPollTimeAdd(void *handle, data_package *pkg, UINT32 poll_time)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}
@@ -2491,7 +2491,7 @@ UINT8 *JsonSampleIntGet(void *handle, UINT8 *pkg, UINT32 *len)
 	ret = PackageJsonDataGet(pkg, &key);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s get data %s from package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s get data %s from package fail.",
 		  		  dev->device_id, key.key_str);
 		return NULL;
 	}
@@ -2522,7 +2522,7 @@ UINT32 JsonSampleIntAdd(void *handle, data_package *pkg, UINT32 interval)
 	ret = PackageJsonDataAdd(pkg, &key);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_WARN, "Device %s add data %s to package fail.", 
+		LOG_PRINT(  Prome_LOG_WARN, "Device %s add data %s to package fail.",
 		  		  dev->device_id, key.key_str);
 		return 0;
 	}

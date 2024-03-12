@@ -250,7 +250,7 @@ INT32 DeviceMqttCfgParse(void *handle, UINT8 *package, UINT8 need_check)
 			ret = device_mqtt_check(&mqtt);
 			if(ret)
 			{
-				LOG_PRINT(WX_LOG_ERROR, 
+				LOG_PRINT(  Prome_LOG_ERROR,
 						  "Device %s the mqtt broker we receive cannot be connected.", 
 						  dev->device_id);
 				return -1;
@@ -273,7 +273,7 @@ INT32 DeviceMqttCfgParse(void *handle, UINT8 *package, UINT8 need_check)
 
 /*****************************************************************************
  * @Function	: cfg_parse_mqtt
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 解析MQTT相关配置
  * @param[in]  	: DEV_DRIVER *dev  设备句柄
@@ -782,7 +782,7 @@ UINT32 DeviceCfgChainSave(void *handle, UINT8 *file)
 
 /*****************************************************************************
  * @Function	: cfg_parse_dev_key
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 从配置字串中获取设备的公私钥，若没有，则为该设备随机分配
  				  设备公钥：直接十六进制转字符串保存
@@ -854,7 +854,7 @@ static UINT32 device_key_cfg_parse(DEV_DRIVER *dev, UINT8 *package)
 
 /*****************************************************************************
  * @Function	: file_dev_key_save
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 将设备的公私钥保存到配置文件中
  				  设备公钥：直接十六进制转字符串保存
@@ -1048,7 +1048,7 @@ INT32 DeviceCfgListParse(void *handle, UINT8 *data)
 				break;
 			}
 			default:
-				LOG_PRINT(WX_LOG_ERROR, "Parse config fail, reason: unknown config type.");
+				LOG_PRINT(  Prome_LOG_ERROR, "Parse config fail, reason: unknown config type.");
 				break;
 		}
 		SAFE_FREE(sub_pkg);
@@ -1057,7 +1057,7 @@ INT32 DeviceCfgListParse(void *handle, UINT8 *data)
 	/*存在配置解析出错*/
 	if(chain_result < 0)
 	{
-		//LOG_PRINT(WX_LOG_ERROR, "Device %s parse config fail.", dev->device_id);
+		//LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse config fail.", dev->device_id);
 		cJSON_Delete(root); 
 		return -1;
 	}
@@ -1166,7 +1166,7 @@ UINT32 DeviceCfgListSave(void *handle, UINT8 *file)
 
 /*****************************************************************************
  * @Function	: DeviceCfgInit
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 读取设备配置文件（网关本地保存），配置文件是以JSON格式保存
  * @param[in]  	: void *handle  设备操作句柄
@@ -1191,7 +1191,7 @@ UINT32 DeviceCfgKeyRead(void *handle, UINT8 *file)
 		filebuff = ReadFileAll(file);
 		if(filebuff == NULL)
 		{
-			LOG_PRINT(WX_LOG_ERROR, "Read file %s fail, maybe not exist or empty!", file);
+			LOG_PRINT(  Prome_LOG_ERROR, "Read file %s fail, maybe not exist or empty!", file);
 			return 1;
 		}
 
@@ -1199,7 +1199,7 @@ UINT32 DeviceCfgKeyRead(void *handle, UINT8 *file)
 		ret = device_key_cfg_parse(dev, filebuff);
 		if(ret)
 		{
-			LOG_PRINT(WX_LOG_ERROR, "Json parse fail, data :%s", filebuff);
+			LOG_PRINT(  Prome_LOG_ERROR, "Json parse fail, data :%s", filebuff);
 			SAFE_FREE(filebuff);
 			return 1;
 		}
@@ -1327,7 +1327,7 @@ UINT32 DeviceCfgFileServerSave(void *handle, UINT8 *file)
 
 /*****************************************************************************
  * @Function	: cfg_parse_filecfg
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 解析文件存储相关配置
  * @param[in]  	: DEV_DRIVER *dev  设备操作句柄
@@ -1403,7 +1403,7 @@ static INT32 device_cfg_fileserver_parse(void *handle, UINT8 *package)
 
 /*****************************************************************************
  * @Function	: cfg_parse_mqtt
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 解析MQTT相关配置
  * @param[in]  	: DEV_DRIVER *dev  设备句柄
@@ -1652,7 +1652,7 @@ static INT32 device_rule_compare(RULE_INFO *rule1, RULE_INFO *rule2)
 
 /*****************************************************************************
  * @Function	: device_rule_parse
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 设备的rule配置解析
  * @param[in]  	: void *handle  设备句柄
@@ -1982,7 +1982,7 @@ static UINT32 _file_rule_delete(data_package *pkg, ALG_TYPE_E type)
 
 /*****************************************************************************
  * @Function	: FileRuleSave
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 将设备rule信息保存到配置文件中
  * @param[in]  	: void *handle  设备句柄
@@ -2047,7 +2047,7 @@ UINT32 DeviceCfgRuleSave(void *handle, UINT8 *file)
 
 /*****************************************************************************
  * @Function	: FileRuleDelete
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 删除配置文件中rule配置
  * @param[in]  	: void *handle  设备句柄
@@ -2163,7 +2163,7 @@ static UINT32 device_cfg_bp_compare(BP_CFG *cfg1, BP_CFG *cfg2)
 
 /*****************************************************************************
  * @Function	: cfg_parse_bpcfg
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 解析BP相关配置
  * @param[in]  	: DEV_DRIVER *dev  设备句柄
@@ -2217,7 +2217,7 @@ static UINT32 device_cfg_bp_parse(DEV_DRIVER *dev, UINT8 *package)
 	root = cJSON_Parse(package);
 	if(root == NULL)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Json parse fail, data :%s", package);
+		LOG_PRINT(  Prome_LOG_ERROR, "Json parse fail, data :%s", package);
 		return 1;
 	}
 	array = cJSON_GetObjectItem(root, KEY_STR_BP_LIST);
@@ -2244,7 +2244,7 @@ static UINT32 device_cfg_bp_parse(DEV_DRIVER *dev, UINT8 *package)
 
 /*****************************************************************************
  * @Function	: cfg_parse_mqtt
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 解析MQTT相关配置
  * @param[in]  	: DEV_DRIVER *dev  设备句柄

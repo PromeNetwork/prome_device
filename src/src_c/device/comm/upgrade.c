@@ -40,22 +40,22 @@ static void *_device_upgrade(void *ptr)
 	sprintf(localpath, "%s/%s", cfg->curr_path, cfg->file);
 	
 	printf("url:%s\r\n", cfg->url);
-	LOG_PRINT(WX_LOG_INFO, "Start download upgrade file.");
+	LOG_PRINT(  Prome_LOG_INFO, "Start download upgrade file.");
 	ret = http_download_file(cfg->url, localpath);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Download upgrade file fail.");
+		LOG_PRINT(  Prome_LOG_ERROR, "Download upgrade file fail.");
 		upgrade_status = 1;
 		sem_post(&upgrade_sem);
 		return NULL;
 	}
-	LOG_PRINT(WX_LOG_INFO, "Download upgrade file ok.");
+	LOG_PRINT(  Prome_LOG_INFO, "Download upgrade file ok.");
 	memset(cmd, 0, sizeof(cmd));
 	sprintf(cmd, "%s %s %s", UPGRADE_SCRIPT, localpath, cfg->ver);
 	ret = SystemNew(cmd);
 	if(ret)
 	{
-		//LOG_PRINT(WX_LOG_ERROR, "Copy upgrade file fail.");
+		//LOG_PRINT(  Prome_LOG_ERROR, "Copy upgrade file fail.");
 		upgrade_status = 1;
 		sem_post(&upgrade_sem);
 		return NULL;
@@ -79,7 +79,7 @@ UINT32 DoUpgrade(UPGRADE_CFG *cfg)
 		return 1;
 	}
 
-	LOG_PRINT(WX_LOG_INFO, "System start upgrade ...");
+	LOG_PRINT(  Prome_LOG_INFO, "System start upgrade ...");
 	#if 0
 	memset(&ver_new, 0, sizeof(ver_new));
 	memset(&ver_now, 0, sizeof(ver_now));
@@ -89,7 +89,7 @@ UINT32 DoUpgrade(UPGRADE_CFG *cfg)
 	//if((ret == 1) || (ret == 0))
 	if(ret == 0)
 	{/*当前版本高于或等于待升级版本，不升级*/
-		LOG_PRINT(WX_LOG_ERROR, "%s %d.%d.%d.%s %s %s %s",
+		LOG_PRINT(  Prome_LOG_ERROR, "%s %d.%d.%d.%s %s %s %s",
 				  "The current version", ver_now.major_ver, 
 				  ver_now.minor_ver, ver_now.stage_ver, ver_now.build_time,
 				  "is higher than or equal to the version",
@@ -103,20 +103,20 @@ UINT32 DoUpgrade(UPGRADE_CFG *cfg)
 	para = malloc(sizeof(UPGRADE_CFG));
 	if(para == NULL)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Gateway upgrade fail!");
+		LOG_PRINT(  Prome_LOG_ERROR, "Gateway upgrade fail!");
 		return 1;
 	}
 	memcpy(para, cfg, sizeof(UPGRADE_CFG));
 
 	if (!pthread_create(&id, NULL, _device_upgrade, (void *)para))
     {
-        LOG_PRINT(WX_LOG_INFO, "Create upgrade thread OK!");
+        LOG_PRINT(  Prome_LOG_INFO, "Create upgrade thread OK!");
 		sem_wait(&upgrade_sem);
 		
     }
     else
     {
-        LOG_PRINT(WX_LOG_ERROR, "Create upgrade thread fail!");
+        LOG_PRINT(  Prome_LOG_ERROR, "Create upgrade thread fail!");
 		sem_destroy(&upgrade_sem);
 		return 1;
     }

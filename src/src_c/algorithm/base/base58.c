@@ -29,7 +29,7 @@
 #include "ripemd160.h"
 #include "memzero.h"
 
-const char b58digits_ordered[] = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+const char b58digits_ordered[] = "123456789ABCDEFGHJKLMNPQRSTUV  PromeYZabcdefghijkmnopqrstuv  Promeyz";
 const int8_t b58digits_map[] = {
 	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
 	-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,

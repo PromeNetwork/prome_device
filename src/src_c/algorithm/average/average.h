@@ -1,9 +1,9 @@
 /***********************************************************************************
  * @file   			: average.h
- * @author   		: xqchen
+
  * @date   			: 2020-12-3
  * @brief   		: average.c header file
- * @Copyright   	: Copyright (c) 2008-2020   Shanghai Wanxiang Blockchain Inc.
+
  * @other   		: 
  * @note History 	: 
 ***********************************************************************************/

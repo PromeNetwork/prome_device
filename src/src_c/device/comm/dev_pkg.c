@@ -70,7 +70,7 @@ UINT8 *PKG_TYPE_STR(PKG_TYPE_E type)
 #if 0
 /*****************************************************************************
  * @Function	: rule_result_to_string
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 将设备rule执行结果JSON转成字符串，由于IoT -
                   平台无法处理JSON嵌套，暂时转成字符串处理
@@ -137,7 +137,7 @@ static UINT8 *device_pkg_rule_result(DEV_DRIVER *dev)
 
 /*****************************************************************************
  * @Function	: device_data_sign
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 使用设备的私钥为指定数据进行签名
  * @param[in]  	: void *handle  设备句柄
@@ -221,7 +221,7 @@ static UINT32 device_pkg_basic_info(DEV_DRIVER *dev, data_package *pkg)
 
 /*****************************************************************************
  * @Function	: device_pkg_send
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 数据发送接口
  * @param[in]  	: DEV_DRIVER *dev     设备句柄
@@ -303,7 +303,7 @@ static UINT32 device_pkg_send(DEV_DRIVER *dev, data_package *pkg,
 				dev->dev_status = STATUS_DATA_ONCHAIN_FAIL;
 				return 1;
 			}
-			LOG_PRINT(WX_LOG_INFO, "Device %s data on blockchain ok.", dev->device_id);
+			LOG_PRINT(  Prome_LOG_INFO, "Device %s data on blockchain ok.", dev->device_id);
 
 			ret = JsonHashAdd((void *)dev, pkg, PoeHash);
 			if(ret == 0)
@@ -417,7 +417,7 @@ static UINT32 device_pkg_send(DEV_DRIVER *dev, data_package *pkg,
 					 //(struct mosquitto **)&dev->mqtt_cfg.report_mosq);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s connect to mqtt broker fail.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s connect to mqtt broker fail.",
 							  dev->device_id);
 		return ret;
 	}
@@ -425,7 +425,7 @@ static UINT32 device_pkg_send(DEV_DRIVER *dev, data_package *pkg,
 	ret = DeviceServerConnect((void *)dev);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s connect to mqtt broker fail.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s connect to mqtt broker fail.",
 							  dev->device_id);
 		return ret;
 	}
@@ -435,12 +435,12 @@ static UINT32 device_pkg_send(DEV_DRIVER *dev, data_package *pkg,
 					 //(struct mosquitto *)dev->mqtt_cfg.report_mosq);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Mqtt publish topic %s fail, ret:%d.", topic, ret);
+		LOG_PRINT(  Prome_LOG_ERROR, "Mqtt publish topic %s fail, ret:%d.", topic, ret);
 		//DeviceServerDisconnect((void *)dev);
 		return ret;
 	}
 
-	LOG_PRINT(WX_LOG_INFO, "Device %s send %s package to platform ok.", 
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s send %s package to platform ok.",
 			  dev->device_id, PKG_TYPE_STR(pkgtype));
 	dev->dev_status = STATUS_SUCCESS;
 
@@ -813,7 +813,7 @@ UINT32 DevicePkgReport(void *handle, void *data)
 
 /*****************************************************************************
  * @Function	: rule_result_to_string
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 将设备rule执行结果JSON转成字符串，由于IoT -
                   平台无法处理JSON嵌套，暂时转成字符串处理
@@ -880,7 +880,7 @@ static UINT8 *rule_result_to_string(DEV_DRIVER *dev)
 
 /*****************************************************************************
  * @Function	: rule_result_pkg
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 将设备rule执行结果封装报文
  * @param[in]  	: void *handle           设备句柄

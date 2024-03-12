@@ -69,7 +69,7 @@ static UINT32 setevidencedata(DEV_DRIVER *dev, UINT8 *data,
 	ret = JsonEvidenceAdd((void *)dev, &package, data);
 	if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s data on blockchain fail.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s data on blockchain fail.",
 				  dev->device_id);
 		dev->dev_status = STATUS_DATA_ONCHAIN_FAIL;
 		PackageFree(&package);
@@ -82,7 +82,7 @@ static UINT32 setevidencedata(DEV_DRIVER *dev, UINT8 *data,
 					(void *)&post_return, dev->chain_cfg.token);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s data on blockchain fail.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s data on blockchain fail.",
 				  dev->device_id);
 		dev->dev_status = STATUS_DATA_ONCHAIN_FAIL;
 		PackageFree(&package);
@@ -99,7 +99,7 @@ static UINT32 setevidencedata(DEV_DRIVER *dev, UINT8 *data,
 	tmp = JsonRetCodeGet((void *)dev, post_return.data, &len);
 	if(tmp == NULL)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s data on blockchain fail, msg:%s.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s data on blockchain fail, msg:%s.",
 				  dev->device_id, post_return.data);
 		dev->dev_status = STATUS_DATA_ONCHAIN_FAIL;
 		SAFE_FREE(post_return.data);
@@ -110,7 +110,7 @@ static UINT32 setevidencedata(DEV_DRIVER *dev, UINT8 *data,
 	SAFE_FREE(tmp);
 	if(ret != ERR_REQUEST_SUCCESS)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s data on blockchain fail, msg:%s.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s data on blockchain fail, msg:%s.",
 				  dev->device_id, post_return.data);
 		dev->dev_status = STATUS_DATA_ONCHAIN_FAIL;
 		SAFE_FREE(post_return.data);
@@ -122,7 +122,7 @@ static UINT32 setevidencedata(DEV_DRIVER *dev, UINT8 *data,
 	tmp = JsonRawDataGet((void *)dev, post_return.data, &len);
 	if(tmp == NULL)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s data on blockchain fail, msg:%s.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s data on blockchain fail, msg:%s.",
 				  dev->device_id, post_return.data);
 		dev->dev_status = STATUS_DATA_ONCHAIN_FAIL;
 		SAFE_FREE(post_return.data);
@@ -157,7 +157,7 @@ UINT32 DataOnchain(void *handle, UINT8 *data, UINT32 data_len, UINT8 *hasher)
 			if(ret || (respone.SaveRetCode != ERR_SUCCESS) 
 			   && (respone.SaveRetCode != ERR_REQUEST_SUCCESS))
 			{
-				LOG_PRINT(WX_LOG_ERROR, "Device %s data on blockchain fail, msg:%s.", 
+				LOG_PRINT(  Prome_LOG_ERROR, "Device %s data on blockchain fail, msg:%s.",
 				dev->device_id, respone.SaveRetDesc);
 				dev->dev_status = STATUS_DATA_ONCHAIN_FAIL;
 				return ret;

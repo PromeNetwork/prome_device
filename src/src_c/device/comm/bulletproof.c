@@ -113,7 +113,7 @@ UINT32 BulletProofLocal(DEV_DRIVER *dev, double data, UINT8 *proof, UINT32 ct_id
 
 	if(dev->bp_cfg.ct_cfg == NULL)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "BulletProof fail, reason: no proof config.\r\n");
+		LOG_PRINT(  Prome_LOG_ERROR, "BulletProof fail, reason: no proof config.\r\n");
 		SAFE_FREE(tmp);
 		return 1;
 	}
@@ -137,7 +137,7 @@ UINT32 BulletProofLocal(DEV_DRIVER *dev, double data, UINT8 *proof, UINT32 ct_id
 
 /*****************************************************************************
  * @Function	: BulletProofGet
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 为指定的设备数据生成proof证明
  * @param[in]  	: void *handle  设备句柄
@@ -183,7 +183,7 @@ UINT32 BulletProofGet(void *handle, double data, UINT8 *proof, void *para)
 
 /*****************************************************************************
  * @Function	: BulletProofOnchain
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 将proof区块链存证，并返回存证凭证
  * @param[in]  	: void *handle   设备句柄

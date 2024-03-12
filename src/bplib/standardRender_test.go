@@ -7,11 +7,11 @@ import (
 
 func TestStandardPreparing(t *testing.T) {
 	structTestList := []Standard{
-		{1, 1, "Governor", "WXblockchain", 90, 30, 2, "alpha"},
-		{2, 2, "Governor", "WXblockchain", 10, 50, 2, "alpha"},
+		{1, 1, "Governor", " ", 90, 30, 2, "alpha"},
+		{2, 2, "Governor", " ", 10, 50, 2, "alpha"},
 		{3, 2, "Governor", "MSTH", 10, 50, 2, "alpha"},
-		{4, 9, "Governor", "WXblockchain", 1000, 6999, 1, "alpha"},
-		{5, 2, "Governor", "WXblockchain", 100, 505, 2, "alpha"},
+		{4, 9, "Governor", " ", 1000, 6999, 1, "alpha"},
+		{5, 2, "Governor", " ", 100, 505, 2, "alpha"},
 	}
 	got := make(map[int]RenderedStandard)
 	want := map[int]RenderedStandard{2: {10000, 50500, 2}, 9: {10000, 69990, 1}}

@@ -22,7 +22,7 @@ UINT32 ModbusConnect(UINT8 *ipaddr, UINT32 port, UINT32 slave_id, modbus_t **fd)
     ctx = modbus_new_tcp(ipaddr, port);
     if (ctx == NULL) 
 	{
-        LOG_PRINT(WX_LOG_ERROR, "Modbus connection %s port %d id %d failed: %s", 
+        LOG_PRINT(  Prome_LOG_ERROR, "Modbus connection %s port %d id %d failed: %s",
 							  ipaddr, port, slave_id, 
 							  "unable to allocate libmodbus context");
         return 1;
@@ -35,7 +35,7 @@ UINT32 ModbusConnect(UINT8 *ipaddr, UINT32 port, UINT32 slave_id, modbus_t **fd)
 
     if (modbus_connect(ctx) == -1) 
 	{
-        LOG_PRINT(WX_LOG_ERROR, "Modbus connection %s port %d id %d failed: %s", 
+        LOG_PRINT(  Prome_LOG_ERROR, "Modbus connection %s port %d id %d failed: %s",
 							  ipaddr, port, slave_id, modbus_strerror(errno));
         modbus_free(ctx);
         return 1;

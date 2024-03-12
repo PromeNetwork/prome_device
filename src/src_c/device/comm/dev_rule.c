@@ -105,7 +105,7 @@ void *DevRuleAlgGet(RULE_INFO *rule, ALG_TYPE_E type)
 
 /*****************************************************************************
  * @Function	: DevBulletProof
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 将制定的设备数据生成proof证明
  * @param[in]  	: void *handle    设备句柄
@@ -160,7 +160,7 @@ UINT32 DevBulletProof(void *handle, ALG_PROOF *alg, double value)
 
 /*****************************************************************************
  * @Function	: DevAveOnchain
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 将设备数据平均值区块链存证
  * @param[in]  	: void *handle  设备句柄
@@ -203,7 +203,7 @@ UINT32 DevAveOnchain(void *handle, ALG_AVE *alg)
 
 /*****************************************************************************
  * @Function	: dev_rul_exec
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 设备rule执行处理函数
  * @param[in]  	: void *ptr  设备句柄参数
@@ -222,13 +222,13 @@ static void dev_rul_exec(void *ptr, int len)
 	dev = (DEV_DRIVER *)ptr;
 	if(dev == NULL)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Exec rule fail, Reason:dev handle is NULL.");
+		LOG_PRINT(  Prome_LOG_ERROR, "Exec rule fail, Reason:dev handle is NULL.");
 		return;
 	}
 
 	if(dev->dev_rule_func == NULL)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s exec rule fail, Reason:exec function is NULL.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s exec rule fail, Reason:exec function is NULL.",
 				  dev->device_id);
 		return;
 	}
@@ -236,31 +236,31 @@ static void dev_rul_exec(void *ptr, int len)
 	ret = dev->dev_rule_func(dev);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s exec rule fail, Reason:%s.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s exec rule fail, Reason:%s.",
 				  dev->device_id, RULE_STATUS_STR(ret));
 	}
 	else
 	{
-		LOG_PRINT(WX_LOG_INFO, "Device %s rule execution ok.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s rule execution ok.", dev->device_id);
 	}
 
 	ret = DevicePkgRuleResult(ptr, ret);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_ERROR, 
+		LOG_PRINT(  Prome_LOG_ERROR,
 				  "Device %s send rule execution reslut to platform fail.", 
 				  dev->device_id);
 		return;
 	}
 
-	LOG_PRINT(WX_LOG_INFO, 
+	LOG_PRINT(  Prome_LOG_INFO,
 			  "Device %s send rule execution reslut to platform ok.", 
 			  dev->device_id);
 }
 
 /*****************************************************************************
  * @Function	: DevRuleStart
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 启动指定设备的rule运行，目前一台设备只能运行一条rule
  * @param[in]  	: void *handle  设备句柄
@@ -303,7 +303,7 @@ UINT32 DevRuleStart(void *handle)
 
 /*****************************************************************************
  * @Function	: DevRuleStop
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 停止指定设备的rule运行
  * @param[in]  	: void *handle  设备句柄

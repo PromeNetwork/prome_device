@@ -10,10 +10,10 @@ func TestJSONArray(t *testing.T) {
 	jsonFile := "./standard.json"
 	var got []Standard
 	want := []Standard{
-		{1, 1, "Governor", "WXblockchain", 10, 40, 2, "alpha"},
-		{2, 2, "Governor", "WXblockchain", 10, 50, 2, "alpha"},
+		{1, 1, "Governor", " ", 10, 40, 2, "alpha"},
+		{2, 2, "Governor", " ", 10, 50, 2, "alpha"},
 		{3, 2, "Governor", "MSTH", 10, 50, 2, "alpha"},
-		{4, 9, "Governor", "WXblockchain", 1000, 6999, 1, "alpha"},
+		{4, 9, "Governor", " ", 1000, 6999, 1, "alpha"},
 	}
 	err := getJson(jsonFile, &got)
 	if err != nil {
@@ -32,7 +32,7 @@ func TestJSON(t *testing.T) {
 	jsonFile := "./standard2.json"
 	var got []Standard
 	want := []Standard{
-		{1, 1, "Governor", "WXblockchain", 10, 40, 2, "alpha"},
+		{1, 1, "Governor", " ", 10, 40, 2, "alpha"},
 	}
 	err := getJson(jsonFile, &got)
 	if err != nil {

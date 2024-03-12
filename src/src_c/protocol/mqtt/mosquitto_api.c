@@ -77,7 +77,7 @@ static void on_message(struct mosquitto *mosq, void *obj, const struct mosquitto
 
 static void on_disconnect(struct mosquitto *mosq, void *userdata, int rc)
 {
-	//LOG_PRINT(WX_LOG_INFO, "Mqtt disconnect from server.");
+	//LOG_PRINT(  Prome_LOG_INFO, "Mqtt disconnect from server.");
 }
 
 static int sub_on_connect(struct mosquitto *mosq, void *obj, int result)
@@ -169,7 +169,7 @@ static int _mqtt_connect_(MQTT_CONNECT_PARAM *para, void *obj)
 	rc = mosquitto_loop_start(mosq);
     if(rc != MOSQ_ERR_SUCCESS)
     {
-        LOG_PRINT(WX_LOG_ERROR, "mosquitto loop error, ret:%d", rc);
+        LOG_PRINT(  Prome_LOG_ERROR, "mosquitto loop error, ret:%d", rc);
 		mosquitto_destroy(mosq);
 		para->mosq = NULL;
 		return rc;
@@ -178,7 +178,7 @@ static int _mqtt_connect_(MQTT_CONNECT_PARAM *para, void *obj)
 	rc = mosquitto_connect(mosq, para->host, para->port, 60);
 	if(rc)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Mqtt Connect to server %s port %d fail.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Mqtt Connect to server %s port %d fail.",
 				  			para->host, para->port);
 		mosquitto_destroy(mosq);
 		para->mosq = NULL;
@@ -189,7 +189,7 @@ static int _mqtt_connect_(MQTT_CONNECT_PARAM *para, void *obj)
 
 	if(userdata->connect_status)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Mqtt Connect to server %s port %d fail.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Mqtt Connect to server %s port %d fail.",
 				  			para->host, para->port);
 		mosquitto_destroy(mosq);
 		para->mosq = NULL;
@@ -197,7 +197,7 @@ static int _mqtt_connect_(MQTT_CONNECT_PARAM *para, void *obj)
 	}
 	else
 	{
-		LOG_PRINT(WX_LOG_INFO, "Mqtt Connect to server %s port %d ok.", 
+		LOG_PRINT(  Prome_LOG_INFO, "Mqtt Connect to server %s port %d ok.",
 				  			para->host, para->port);
 		return 0;
 	}
@@ -211,7 +211,7 @@ int MqttPublish(char *topic, void *payload, int len, struct mosquitto *mosq)
 	rc = mosquitto_publish(mosq, NULL, topic, len, payload, 0, false);
 	if(rc)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Mqtt publish topic %s fail, ret:%d.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Mqtt publish topic %s fail, ret:%d.",
 				  topic, rc);
 		return rc;
 	}

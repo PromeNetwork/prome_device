@@ -288,11 +288,11 @@ void PreSenderThreadStart()
 	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED); 
 	if (!pthread_create(&tid, &attr, pre_sender_listen, NULL))
     {
-        //LOG_PRINT(WX_LOG_INFO, "Create sender listen thread OK!");
+        //LOG_PRINT(  Prome_LOG_INFO, "Create sender listen thread OK!");
     }
     else
     {
-        //LOG_PRINT(WX_LOG_ERROR, "Create sender listen thread fail!");
+        //LOG_PRINT(  Prome_LOG_ERROR, "Create sender listen thread fail!");
     }
 	pthread_attr_destroy(&attr);
 	sleep(1);

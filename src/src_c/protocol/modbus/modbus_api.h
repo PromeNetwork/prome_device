@@ -1,9 +1,9 @@
 /***********************************************************************************
  * @file   			: modbus_api.h
- * @author   		: xqchen
+
  * @date   			: 2021-2-1
  * @brief   		: modbus_api.c header file
- * @Copyright   	: Copyright (c) 2008-2021   Shanghai Wanxiang Blockchain Inc.
+ * @Copyright   	: Copyright (c) 2008-2021
  * @other   		: 
  * @note History 	: 
 ***********************************************************************************/

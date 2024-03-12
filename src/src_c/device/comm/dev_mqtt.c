@@ -298,7 +298,7 @@ static UINT32 mqtt_receiver_topic_parse(UINT8 *topic, MQTT_TOPIC_INFO *topic_inf
 
 /*****************************************************************************
  * @Function	: dev_cfg_receiver_cb
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 设备配置订阅回调函数
  * @param[in]  	: void *data       配置数据
@@ -356,7 +356,7 @@ static INT32 mqtt_rpc_process(void *handle,
 						   PKG_TYPE_DEV_RPC_MQTT_RESP);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s parse mqtt config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse mqtt config fail.", dev->device_id);
 	}
 	#endif
 
@@ -368,7 +368,7 @@ static INT32 mqtt_rpc_process(void *handle,
 
 /*****************************************************************************
  * @Function	: dev_cfg_receiver_cb
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 设备配置订阅回调函数
  * @param[in]  	: void *data       配置数据
@@ -429,7 +429,7 @@ static INT32 mqtt_receiver_cb(void *data, UINT32 data_len, char *topic, void *pa
 
 /*****************************************************************************
  * @Function	: dev_cfg_receiver
- * @author		: xqchen
+
  * @date		: 2021-4-30
  * @brief       : 设备配置订阅函数
  * @param[in]  	: void *ptr  设备句柄
@@ -505,12 +505,12 @@ void DeviceMqttConnect(void *handle)
 						device_mqtt_connect, 
 						(void *)dev))
     {
-        LOG_PRINT(WX_LOG_INFO, "Create %s mqtt connect thread OK!", 
+        LOG_PRINT(  Prome_LOG_INFO, "Create %s mqtt connect thread OK!",
 							dev->device_id);
     }
     else
     {
-        LOG_PRINT(WX_LOG_ERROR, "Create %s mqtt connect thread fail!", 
+        LOG_PRINT(  Prome_LOG_ERROR, "Create %s mqtt connect thread fail!",
 							 dev->device_id);
     }
 	pthread_attr_destroy(&attr);

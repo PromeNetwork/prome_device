@@ -1,10 +1,10 @@
 /***********************************************************************************
  * @file   			: basic_types.h
- * @author   		: xqchen
+
  * @date   			: 2020-9-15
  * @Description   	: This document mainly defines the basic data type, data
                      structure, macro and data enumeration in the SDK
- * @Copyright   	: Copyright (c) 2008-2020   Shanghai Wanxiang Blockchain Inc.
+
  * @other   		: 
  * @note History 	: 
 ***********************************************************************************/
@@ -45,14 +45,14 @@ extern "C"{
 
 #define DEBUG_PRINT_LINE()	printf("function:%s, line:%d\r\n", __FUNCTION__, __LINE__)
 //#define DEBUG_PRINT_LINE()
-#define WXBC_LOCK(lock)		{\
+#define   PromeBC_LOCK(lock)		{\
 								if((lock) != NULL)\
 								{\
 									pthread_mutex_lock(lock);\
 								}\
 							}
 
-#define WXBC_UNLOCK(lock)	{\
+#define   PromeBC_UNLOCK(lock)	{\
 								if((lock) != NULL)\
 								{\
 									pthread_mutex_unlock(lock);\
@@ -112,7 +112,7 @@ typedef unsigned long long  TIMESTAMP;
 #else
 #define ROOT_DIR	"."
 #endif
-#define AES_KEY_DEFAULT	"wxblockchain_aes"
+#define AES_KEY_DEFAULT	" _aes"
 
 
 #if defined(DEV_AES_KEY)

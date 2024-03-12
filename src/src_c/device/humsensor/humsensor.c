@@ -116,20 +116,20 @@ UINT32 HumSensorRuleExec(void *handle)
 		return RULE_ALG_NOT_FOUND;
 	}
 
-	/*1.Ö´ÐÐÆ½¾ùÖµËã·¨*/
+	/*1.Ö´ï¿½ï¿½Æ½ï¿½ï¿½Öµï¿½ã·¨*/
 	ret = hum_ave_rule_exec(dev, alg_ave);
 	if(ret)
 	{
 		return RULE_AVE_GET_FAIL;
 	}
-	/*2.Æ½¾ùÖµ´æÖ¤*/
+	/*2.Æ½ï¿½ï¿½Öµï¿½ï¿½Ö¤*/
 	ret = DevAveOnchain(dev, alg_ave);
 	if(ret)
 	{
 		return RULE_AVE_ONCHAIN_FAIL;
 	}
 
-	/*3.Ö´ÐÐbullet proofËã·¨*/
+	/*3.Ö´ï¿½ï¿½bullet proofï¿½ã·¨*/
 	alg_proof = (ALG_PROOF *)DevRuleAlgGet(rule, ALG_TYPE_BULLET_PROOF);
 	if(alg_proof == NULL)
 	{
@@ -140,7 +140,7 @@ UINT32 HumSensorRuleExec(void *handle)
 	{
 		return RULE_PROOF_GET_FAIL;
 	}
-	/*4.proof¼°BPIDÉÏÁ´£¬BPIDÓÃÆ½¾ùÖµave´æÖ¤PoEHash*/
+	/*4.proofï¿½ï¿½BPIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BPIDï¿½ï¿½Æ½ï¿½ï¿½Öµaveï¿½ï¿½Ö¤PoEHash*/
 	memcpy(alg_proof->pid, alg_ave->hasher, alg_ave->hasher_len);
 	alg_proof->pid_len = alg_ave->hasher_len;
 
@@ -292,12 +292,12 @@ int HumsensorDataSendJava(UINT8 *deviceid, void *data)
 	ret = HumSensorDataSave((void *)dev, data);
 	if(ret)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s save data to database fail.", 
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s save data to database fail.",
   		  		  dev->device_id);
 	}
 	else
 	{
-		LOG_PRINT(WX_LOG_INFO, "Device %s save data to database ok.", 
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s save data to database ok.",
 		  		  dev->device_id);
 	}
 
@@ -333,14 +333,14 @@ UINT32 HumsensorTaskStop(DEVICE_INFO *dev)
 	tmp = ThreadSearch(thread->argc, thread->argv);
 	if(tmp == NULL)
 	{
-		LOG_PRINT(WX_LOG_INFO, "Running task %s not find ...", thread->task_name);
+		LOG_PRINT(  Prome_LOG_INFO, "Running task %s not find ...", thread->task_name);
 		ThreadArgFree(thread);
 		SAFE_FREE(thread);
 		humsensor_cfg_clean(dev);
 		return 1;
 	}
 
-	LOG_PRINT(WX_LOG_INFO, "Running task %s find ...", thread->task_name); 
+	LOG_PRINT(  Prome_LOG_INFO, "Running task %s find ...", thread->task_name);
 	//PrintThreadInfo(tmp);
 	ThreadStop(tmp);
 	humsensor_cfg_clean(dev);
@@ -399,13 +399,13 @@ UINT32 HumsensorCfgInit(void *handle)
 	filebuff = ReadFileAll(dev->cfg_file);
 	if(filebuff == NULL)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Read file %s fail, maybe not exist or empty!", dev->cfg_file);
+		LOG_PRINT(  Prome_LOG_ERROR, "Read file %s fail, maybe not exist or empty!", dev->cfg_file);
 		return 1;
 	}
 	ret = DeviceCfgIdParse((void *)dev, filebuff, &dev->cfg_id);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
@@ -414,7 +414,7 @@ UINT32 HumsensorCfgInit(void *handle)
 	ret = DeviceMqttCfgInit((void *)dev, filebuff);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init mqtt config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init mqtt config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
@@ -422,7 +422,7 @@ UINT32 HumsensorCfgInit(void *handle)
 	ret = DeviceCfgChainParse((void *)dev, filebuff);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init chain config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init chain config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
@@ -430,21 +430,21 @@ UINT32 HumsensorCfgInit(void *handle)
 	ret = DeviceCfgRuleParse((void *)dev, filebuff, &(dev->rule_cfg));
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init rule config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init rule config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
 	ret = DeviceCfgBpParse((void *)dev, filebuff);
 	if(ret < 0)
 	{
-		LOG_PRINT(WX_LOG_ERROR, "Device %s init bp config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s init bp config fail.", dev->device_id);
 		SAFE_FREE(filebuff);
 		return 1;
 	}
 
 	SAFE_FREE(filebuff);
 
-	LOG_PRINT(WX_LOG_INFO, "Device %s init config ok.", dev->device_id);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s init config ok.", dev->device_id);
 	return 0;
 	
 }
@@ -466,24 +466,24 @@ UINT32 HumsensorCfgRecvCb(void *handle, void *data, UINT32 data_len)
 
 	dev = (DEV_DRIVER *)handle;
 
-	LOG_PRINT(WX_LOG_INFO, "Device %s receiver config.", dev->device_id);
-	//LOG_PRINT(WX_LOG_INFO, "%s", data);
-	LOG_PRINT(WX_LOG_INFO, "Device %s start parse config.", dev->device_id);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s receiver config.", dev->device_id);
+	//LOG_PRINT(  Prome_LOG_INFO, "%s", data);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s start parse config.", dev->device_id);
 	
 	ret = DeviceCfgIdParse((void *)dev, data, &cfgid);
 	if(ret)
 	{
 		status = STATUS_READ_CONFIG_FAIL;
 		DevicePkgCfgRes((void *)dev, data, data_len, status);
-		LOG_PRINT(WX_LOG_INFO, "Device %s parse config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config fail.", dev->device_id);
 		return 0;
 	}
 	
 	if(cfgid == dev->cfg_id)
 	{
-		LOG_PRINT(WX_LOG_INFO, "The running config is same as the received.");
+		LOG_PRINT(  Prome_LOG_INFO, "The running config is same as the received.");
 		DevicePkgCfgRes((void *)dev, data, data_len, status);
-		LOG_PRINT(WX_LOG_INFO, "Device %s parse config ok.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config ok.", dev->device_id);
 		return 0;
 	}
 	else
@@ -494,7 +494,7 @@ UINT32 HumsensorCfgRecvCb(void *handle, void *data, UINT32 data_len)
 		{
 			status = STATUS_READ_CONFIG_FAIL;
 			DevicePkgCfgRes((void *)dev, data, data_len, status);
-			LOG_PRINT(WX_LOG_ERROR, "Device %s parse chain config fail.", dev->device_id);
+			LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse chain config fail.", dev->device_id);
 			return 1;
 		}
 		else if(ret > 0)
@@ -508,7 +508,7 @@ UINT32 HumsensorCfgRecvCb(void *handle, void *data, UINT32 data_len)
 		{
 			status = STATUS_READ_CONFIG_FAIL;
 			DevicePkgCfgRes((void *)dev, data, data_len, status);
-			LOG_PRINT(WX_LOG_ERROR, "Device %s parse rule config fail.", dev->device_id);
+			LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse rule config fail.", dev->device_id);
 			return 1;
 		}
 		else if(ret > 0)
@@ -525,7 +525,7 @@ UINT32 HumsensorCfgRecvCb(void *handle, void *data, UINT32 data_len)
 		{
 			status = STATUS_READ_CONFIG_FAIL;
 			DevicePkgCfgRes((void *)dev, data, data_len, status);
-			LOG_PRINT(WX_LOG_ERROR, "Device %s parse bp config fail.", dev->device_id);
+			LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse bp config fail.", dev->device_id);
 			return 1;
 		}
 		else if(ret > 0)
@@ -536,9 +536,9 @@ UINT32 HumsensorCfgRecvCb(void *handle, void *data, UINT32 data_len)
 
 		if(cfg_result == 0)
 		{
-			LOG_PRINT(WX_LOG_INFO, "The running config is same as the received.");
+			LOG_PRINT(  Prome_LOG_INFO, "The running config is same as the received.");
 			DevicePkgCfgRes(dev, data, data_len, status);
-			LOG_PRINT(WX_LOG_INFO, "Device %s parse config ok.", dev->device_id);
+			LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config ok.", dev->device_id);
 			return 0;
 		}
 		
@@ -554,7 +554,7 @@ UINT32 HumsensorCfgRecvCb(void *handle, void *data, UINT32 data_len)
 
 		DevicePkgCfgRes((void *)dev, data, data_len, status);
 		
-		LOG_PRINT(WX_LOG_INFO, "Device %s parse config ok.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_INFO, "Device %s parse config ok.", dev->device_id);
 	}
 
 	return 0;
@@ -587,9 +587,9 @@ UINT32 HumsensorMqttCfgRecvCb(void *handle,
 
 	dev = (DEV_DRIVER *)handle;
 
-	LOG_PRINT(WX_LOG_INFO, "Device %s receiver mqtt config.", dev->device_id);
-	//LOG_PRINT(WX_LOG_INFO, "%s", data);
-	LOG_PRINT(WX_LOG_INFO, "Device %s start parse mqtt config.", dev->device_id);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s receiver mqtt config.", dev->device_id);
+	//LOG_PRINT(  Prome_LOG_INFO, "%s", data);
+	LOG_PRINT(  Prome_LOG_INFO, "Device %s start parse mqtt config.", dev->device_id);
 
 	ret = DeviceMqttCfgParse((void *)dev, data, 1);
 	if(ret > 0)
@@ -599,13 +599,13 @@ UINT32 HumsensorMqttCfgRecvCb(void *handle,
 	}
 	else if(ret == 0)
 	{
-		LOG_PRINT(WX_LOG_INFO, "The running mqtt config is same as the received.");
+		LOG_PRINT(  Prome_LOG_INFO, "The running mqtt config is same as the received.");
 		need_restart = 0;
 	}
 	else
 	{
 		dev->dev_status = STATUS_READ_CONFIG_FAIL;
-		LOG_PRINT(WX_LOG_ERROR, "Device %s parse mqtt config fail.", dev->device_id);
+		LOG_PRINT(  Prome_LOG_ERROR, "Device %s parse mqtt config fail.", dev->device_id);
 		need_restart = 0;
 	}
 
